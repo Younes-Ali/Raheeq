@@ -18,54 +18,53 @@ export default function Testimonials() {
       id="testimonials"
       data-section="testimonials"
       className="
-        relative
+        relative overflow-hidden
         min-h-screen
-        overflow-hidden
+        p-6 sm:p-8 md:p-12 lg:p-16
         bg-[var(--beige)]
-        px-6
-        py-6
-        sm:px-8
-        md:px-12
-        lg:px-16
       "
     >
       {/* Heading */}
       <div
         className="
-          absolute
-          left-1/2
-          top-1/2
-          z-10
-          w-[min(90%,520px)]
-          -translate-x-1/2
-          -translate-y-1/2
+          md:absolute md:left-1/2 md:top-1/2 z-20
+          w-[90%] max-w-[520px]
           text-center
-          pointer-events-none
+          -translate-y-7 md:-translate-x-1/2 md:-translate-y-1/2
         "
       >
         <Reveal>
-          <h2 className="display text-[clamp(1.7rem,4vw,2.8rem)] text-[var(--dark-green)]">
+          <h2
+            className="
+              text-[clamp(1.7rem,4vw,2.8rem)] text-[var(--dark-green)]
+              display
+            "
+          >
             What people say
           </h2>
         </Reveal>
       </div>
 
       {/* Testimonials */}
-      <Reveal stagger className="relative min-h-[85vh] h-full">
+      <Reveal
+        stagger
+        className="
+          relative
+          h-full min-h-[85vh]
+        "
+      >
         {TESTIMONIALS.map((t, i) => (
           <motion.div
             key={t.name}
             style={POSITIONS[i]}
             className="
-              absolute
-              w-[min(300px,30vw)]
-              rounded-2xl
-              border
-              border-[rgba(22,40,28,0.12)]
-              bg-white/60
+              flex flex-col md:absolute
+              w-full md:w-[min(300px,30vw)]
               p-5
-              backdrop-blur-md
-              shadow-lg
+              bg-white/60
+              rounded-2xl border border-[rgba(22,40,28,0.12)]
+              shadow-lg backdrop-blur-md
+              gap-2
             "
             animate={{
               y: -12,
@@ -86,11 +85,20 @@ export default function Testimonials() {
               },
             }}
           >
-            <p className="text-[18px] leading-7 text-[rgba(22,40,28,0.8)]">
+            <p
+              className="
+                text-[18px] text-[rgba(22,40,28,0.8)] leading-7
+              "
+            >
               &ldquo;{t.quote}&rdquo;
             </p>
 
-            <div className="mt-3 text-xs text-[var(--dark-green-soft)]">
+            <div
+              className="
+                mt-3
+                text-xs text-[var(--dark-green-soft)]
+              "
+            >
               {t.name}
             </div>
           </motion.div>
