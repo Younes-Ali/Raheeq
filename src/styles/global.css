@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --dark-green: #16281c;
+  --dark-green-soft: #1e3526;
+  --beige: #f2ead9;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Chewy', system-ui, sans-serif;
+  background: var(--beige);
+  color: var(--dark-green);
+}
+
+h1, h2, h3, h4, .display {
+  font-family: 'Chewy', system-ui, sans-serif;
+  font-weight: 400;
+}
+
+.section {
+  padding: clamp(64px, 10vw, 140px) clamp(20px, 6vw, 80px);
+}
+
+button.cta {
+  background: var(--dark-green);
+  border: none;
+  border-radius: 999px;
+  color: var(--beige);
+  padding: 16px 40px;
+  font-family: 'Chewy', system-ui, sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s ease;
+}
+button.cta:hover {
+  background: var(--dark-green-soft);
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- video placeholder ---------- */
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    rgba(242, 234, 217, 0.06),
+    rgba(242, 234, 217, 0.06) 12px,
+    rgba(242, 234, 217, 0.02) 12px,
+    rgba(242, 234, 217, 0.02) 24px
+  );
+  border: 2px dashed rgba(242, 234, 217, 0.4);
+  color: var(--beige);
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+.video-placeholder code {
+  background: rgba(0, 0, 0, 0.35);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+/* ---------- card hover ---------- */
+.hover-card {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease;
+}
+.hover-card:hover {
+  transform: translateY(-10px) scale(1.015);
+  box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+}
