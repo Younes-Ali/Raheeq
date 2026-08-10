@@ -8,7 +8,7 @@ function VideoPlaceholder({ label, expectedPath, height = '100vh' }) {
         <div style={{ fontFamily: "'Chewy', system-ui, sans-serif", fontSize: 18 }}>{label}</div>
         <code>{expectedPath}</code>
         <div style={{ fontSize: 11, opacity: 0.75, maxWidth: 320 }}>
-          حط الفيديو هنا بنفس الاسم ده جوه public/videos/ وهيشتغل تلقائيًا
+            RAHEEEQ
         </div>
       </div>
     </div>
