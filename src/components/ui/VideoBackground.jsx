@@ -11,13 +11,6 @@ function VideoPlaceholder({ label, expectedPath, height = "100vh" }) {
       }}
     >
       <div className="video-placeholder">
-        <div style={{ fontSize: 28 }}>🎬</div>
-        <div
-          style={{ fontFamily: "'Chewy', system-ui, sans-serif", fontSize: 18 }}
-        >
-          {label}
-        </div>
-        <code>{expectedPath}</code>
         <div style={{ fontSize: 11, opacity: 0.75, maxWidth: 320 }}>
           RAHEEEQ
         </div>
