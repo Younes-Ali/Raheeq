@@ -6,15 +6,12 @@ import logo from "../../public/images/logo.jpeg";
 
 export default function Hero() {
   return (
-    <section
-      id="hero"
-      data-section="hero"
-      className="relative"
-    >
+    <section id="hero" data-section="hero" className="relative">
       <VideoBackground
         src="/videos/hero.mp4"
         label="فيديو الهيرو (خلفية اللاندنج)"
         expectedPath="public/videos/hero.mp4"
+        className="max-md:object-[80%_center]"
       />
 
       {/* Overlay */}
