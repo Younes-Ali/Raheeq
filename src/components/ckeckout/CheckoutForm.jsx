@@ -101,7 +101,7 @@ ${order.note || "No additional notes"}
 
       const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 
-      window.open(whatsappURL, "_blank", "noopener,noreferrer");
+      window.location.href = whatsappURL;
 
       clearCart();
 
