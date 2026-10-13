@@ -1,7 +1,7 @@
 export const STATS = [
   {
     pre: "We partner with",
-    value: 500,
+    value: 1000,
     suffix: "+",
     label: "Bee Colonies",
     post: "across a single forest region",
