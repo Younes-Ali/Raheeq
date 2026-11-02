@@ -6,19 +6,28 @@ export const useCartStore = create(
     (set, get) => ({
       items: [],
 
-      // Add product
       addToCart: (product) => {
+        if (product.stock <= 0 || product.outOfStock) {
+          return false;
+        }
+
         const items = get().items;
 
         const existingItem = items.find((item) => item.id === product.id);
 
         if (existingItem) {
+          if (existingItem.quantity >= product.stock) {
+            return false;
+          }
+
           set({
             items: items.map((item) =>
               item.id === product.id
                 ? {
                     ...item,
                     quantity: item.quantity + 1,
+                    price: product.price,
+                    stock: product.stock,
                   }
                 : item,
             ),
@@ -34,30 +43,31 @@ export const useCartStore = create(
             ],
           });
         }
+
+        return true;
       },
 
-      // Remove completely
       removeFromCart: (productId) => {
         set({
           items: get().items.filter((item) => item.id !== productId),
         });
       },
 
-      // Increase quantity
       increaseQuantity: (productId) => {
         set({
-          items: get().items.map((item) =>
-            item.id === productId
-              ? {
-                  ...item,
-                  quantity: item.quantity + 1,
-                }
-              : item,
-          ),
+          items: get().items.map((item) => {
+            if (item.id !== productId) return item;
+
+            if (item.quantity >= item.stock) return item;
+
+            return {
+              ...item,
+              quantity: item.quantity + 1,
+            };
+          }),
         });
       },
 
-      // Decrease quantity
       decreaseQuantity: (productId) => {
         const items = get().items;
 
@@ -75,17 +85,14 @@ export const useCartStore = create(
         });
       },
 
-      // Clear cart
       clearCart: () => {
         set({ items: [] });
       },
 
-      // Total number of products
       getTotalItems: () => {
         return get().items.reduce((total, item) => total + item.quantity, 0);
       },
 
-      // Total price
       getTotalPrice: () => {
         return get().items.reduce(
           (total, item) => total + Number(item.price) * item.quantity,

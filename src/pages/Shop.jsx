@@ -114,10 +114,7 @@ export default function Shop() {
       </header>
 
       {/* Filters */}
-      <FilterBar
-        active={category}
-        onChange={handleCategoryChange}
-      />
+      <FilterBar active={category} onChange={handleCategoryChange} />
 
       {/* Products */}
       {loading ? (
@@ -161,20 +158,13 @@ export default function Shop() {
           "
         >
           {items.map((product) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-            />
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       )}
 
       {/* Pagination */}
-      <Pagination
-        page={page}
-        totalPages={totalPages}
-        onChange={setPage}
-      />
+      <Pagination page={page} totalPages={totalPages} onChange={setPage} />
     </div>
   );
 }
