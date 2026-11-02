@@ -125,7 +125,8 @@ export default function Shop() {
             items-center
             justify-center
             text-center
-            text-[rgba(242,234,217,0.6)]
+            text-2xl
+            text-[var(--dark-green)]
           "
         >
           Loading...
