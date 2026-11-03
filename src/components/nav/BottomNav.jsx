@@ -1,13 +1,11 @@
 import React from "react";
-import { NAV_SECTIONS } from "../../data/content.js";
+import { NAV_SECTIONS } from "../../data/content";
 
 export default function BottomNav({ activeSection }) {
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 pointer-events-none">
       {/* Background Gradient */}
-      <div
-        className="absolute inset-0 h-[130px] bg-black/60 pointer-events-none pt-60"
-      />
+      <div className="absolute inset-0 h-[130px] bg-black/60 pointer-events-none pt-60" />
 
       <nav
         className="
@@ -47,9 +45,10 @@ export default function BottomNav({ activeSection }) {
               transition-all
               duration-300
               ease-out
-              ${activeSection === s.id
-                ? "font-bold text-white scale-[1.5] md:scale-[2.5]"
-                : "font-normal text-gray-400 scale-[1]"
+              ${
+                activeSection === s.id
+                  ? "font-bold text-white scale-[1.5] md:scale-[2.5]"
+                  : "font-normal text-gray-400 scale-[1]"
               }
             `}
           >

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 import WalletCard from "../components/animations/WalletCard.jsx";
-import { ESSENTIALS } from "../data/content.js";
+import { ESSENTIALS } from "../data/content";
 
 export default function Essential() {
   const containerRef = useRef(null);
@@ -18,12 +18,44 @@ export default function Essential() {
       id="essential"
       data-section="essential"
       ref={containerRef}
-      className="relative bg-[var(--beige)]"
+      className="relative bg-[var(--beige)] md:h-auto lg:h-[var(--section-height)]"
       style={{
-        height: `${Math.max(ESSENTIALS.length, 2) * 100}vh`,
+        "--section-height": `${Math.max(ESSENTIALS.length, 2) * 100}vh`,
       }}
     >
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-8 sm:py-12">
+      {/* Mobile & Tablet */}
+      <div className="flex flex-col gap-6 px-5 py-12 md:hidden">
+        <div className="mb-3 text-center">
+          <div className="mb-3 text-[11px] tracking-[0.2em] text-[var(--dark-green-soft)]">
+            THE ESSENTIAL
+          </div>
+
+          <h2 className="display text-[1.9rem] text-[var(--dark-green)]">
+            What makes it raw
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          {ESSENTIALS.map((card, i) => (
+            <WalletCard
+              key={card.title}
+              i={i}
+              title={card.title}
+              tag={card.tag}
+              body={card.body}
+              img={card.img}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop */}
+      <div
+        className="sticky top-0 hidden h-screen flex-col justify-center overflow-hidden py-8 sm:py-12 md:flex"
+        style={{
+          height: "100vh",
+        }}
+      >
         <div className="mb-8 shrink-0 px-5 text-center sm:mb-10">
           <div className="mb-3 text-[11px] tracking-[0.2em] text-[var(--dark-green-soft)] sm:text-[13px]">
             THE ESSENTIAL

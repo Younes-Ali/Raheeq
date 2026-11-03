@@ -1,6 +1,6 @@
 import React from "react";
 import Reveal from "../components/animations/Reveal";
-import { GALLERY } from "../data/content";
+import { GALLERY } from "../data/content.jsx";
 
 export default function Gallery() {
   return (

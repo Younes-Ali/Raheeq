@@ -1,109 +1,68 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Reveal from "../components/animations/Reveal";
-import { TESTIMONIALS } from "../data/content";
+import { TESTIMONIALS } from "../data/content.jsx";
 
 const POSITIONS = [
-  { top: "8%", left: "4%" },
-  { top: "2%", left: "38%" },
-  { top: "10%", right: "3%" },
-  { bottom: "6%", left: "2%" },
-  { bottom: "2%", left: "36%" },
-  { bottom: "8%", right: "4%" },
+  "md:top-[8%] md:left-[4%]",
+  "md:top-[2%] md:left-[38%]",
+  "md:top-[10%] md:right-[3%]",
+  "md:bottom-[6%] md:left-[2%]",
+  "md:bottom-[2%] md:left-[38%]",
+  "md:bottom-[8%] md:right-[4%]",
 ];
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.1,
+      ease: "easeOut",
+    },
+  }),
+};
 
 export default function Testimonials() {
   return (
     <section
       id="testimonials"
       data-section="testimonials"
-      className="
-        relative overflow-hidden
-        min-h-screen
-        p-6 sm:p-8 md:p-12 lg:p-16
-        bg-[var(--beige)]
-      "
+      className="relative overflow-hidden min-h-screen p-5 sm:p-8 md:p-12 lg:p-16 bg-[var(--beige)]"
     >
-      {/* Heading */}
-      <div
-        className="
-          md:absolute md:left-1/2 md:top-1/2 z-20
-          w-[90%] max-w-[520px]
-          text-center
-          -translate-y-7 md:-translate-x-1/2 md:-translate-y-1/2
-        "
-      >
+      {" "}
+      <div className="relative z-20 mx-auto mb-10 w-full max-w-[520px] text-center md:absolute md:left-1/2 md:top-1/2 md:mb-0 md:-translate-x-1/2 md:-translate-y-1/2">
+        {" "}
         <Reveal>
-          <h2
-            className="
-              text-[clamp(1.7rem,4vw,2.8rem)] text-[var(--dark-green)]
-              display
-            "
-          >
-            What people say
-          </h2>
-        </Reveal>
+          {" "}
+          <h2 className="text-[clamp(1.7rem,4vw,2.8rem)] text-[var(--dark-green)] display">
+            What people say{" "}
+          </h2>{" "}
+        </Reveal>{" "}
       </div>
-
-      {/* Testimonials */}
-      <Reveal
-        stagger
-        className="
-          relative
-          h-full min-h-[85vh]
-        "
-      >
+      <div className="relative flex flex-col gap-5 md:block md:min-h-[85vh]">
         {TESTIMONIALS.map((t, i) => (
           <motion.div
             key={t.name}
-            style={POSITIONS[i]}
-            className="
-              flex flex-col md:absolute
-              w-full md:w-[min(300px,30vw)]
-              p-5
-              bg-white/60
-              rounded-2xl border border-[rgba(22,40,28,0.12)]
-              shadow-lg backdrop-blur-md
-              gap-2
-            "
-            animate={{
-              y: -12,
-            }}
-            transition={{
-              type: "spring",
-              stiffness: 180,
-              damping: 6,
-              repeat: Infinity,
-              repeatType: "reverse",
-              delay: i * 0.25,
-            }}
-            whileHover={{
-              scale: 1.03,
-              y: -18,
-              transition: {
-                duration: 0.25,
-              },
-            }}
+            custom={i}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className={`relative z-10 flex w-full flex-col gap-2 rounded-2xl border border-[rgba(22,40,28,0.12)] bg-white/75 p-5 shadow-[0_10px_30px_rgba(22,40,28,0.08)] transition-shadow duration-300 hover:shadow-[0_15px_35px_rgba(22,40,28,0.14)] md:absolute md:w-[min(300px,30vw)] ${POSITIONS[i] || ""}`}
           >
-            <p
-              className="
-                text-[18px] text-[rgba(22,40,28,0.8)] leading-7
-              "
-            >
+            <p className="text-[18px] leading-7 text-[rgba(22,40,28,0.8)]">
               &ldquo;{t.quote}&rdquo;
             </p>
 
-            <div
-              className="
-                mt-3
-                text-xs text-[var(--dark-green-soft)]
-              "
-            >
+            <div className="mt-3 text-xs text-[var(--dark-green-soft)]">
               {t.name}
             </div>
           </motion.div>
         ))}
-      </Reveal>
+      </div>
     </section>
   );
 }

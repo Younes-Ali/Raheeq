@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 
 import Home from "./pages/Home.jsx";
 import Shop from "./pages/Shop.jsx";
@@ -14,8 +15,17 @@ import ProtectedRoute from "./components/admin/ProtectedRoute.jsx";
 
 import ProductsManagement from "./pages/admin/ProductsManagement.jsx";
 import OrdersManagement from "./pages/admin/OrdersManagement.jsx";
+import AdminLayout from "./components/admin/layout/AdminLayout";
 
 export default function App() {
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Toaster
@@ -39,9 +49,11 @@ export default function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
 
         <Route element={<ProtectedRoute />}>
-          <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/products" element={<ProductsManagement />} />
-          <Route path="/admin/orders" element={<OrdersManagement />} />
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="products" element={<ProductsManagement />} />
+            <Route path="orders" element={<OrdersManagement />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFound />} />

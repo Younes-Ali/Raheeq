@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { useSmoothScroll } from '../hooks/useSmoothScroll.js';
-import BottomNav from '../components/nav/BottomNav.jsx';
-import Hero from '../sections/Hero.jsx';
-import Stats from '../sections/Stats.jsx';
-import Mission from '../sections/Mission.jsx';
-import Essential from '../sections/Essential.jsx';
-import Gallery from '../sections/Gallery.jsx';
-import Testimonials from '../sections/Testimonials.jsx';
-import Cta from '../sections/Cta.jsx';
-import Footer from '../sections/Footer.jsx';
-import MagneticButton from '../components/animations/MagneticButton.jsx';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useSmoothScroll } from "../hooks/useSmoothScroll.js";
+import BottomNav from "../components/nav/BottomNav.jsx";
+import Hero from "../sections/Hero.jsx";
+import Stats from "../sections/Stats.jsx";
+import Mission from "../sections/Mission.jsx";
+import Essential from "../sections/Essential.jsx";
+import Gallery from "../sections/Gallery.jsx";
+import Testimonials from "../sections/Testimonials.jsx";
+import Cta from "../sections/Cta.jsx";
+import Footer from "../sections/Footer.jsx";
+import MagneticButton from "../components/animations/MagneticButton.jsx";
+import { useNavigate } from "react-router-dom";
+import ContactInfo from "../sections/ContactInfo.jsx";
 
 export default function Home() {
   useSmoothScroll();
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState("hero");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,16 +51,18 @@ export default function Home() {
   return (
     <div>
       <MagneticButton
-        className=' 
+        className=" 
         fixed
         top-5
         right-5
         z-[1000]
         border-2 
         border-black
-        '
+        "
         onClick={() => navigate("/shop")}
-      >shop</MagneticButton>
+      >
+        shop
+      </MagneticButton>
       <BottomNav activeSection={activeSection} />
       <Hero />
       <Stats />
@@ -68,6 +71,7 @@ export default function Home() {
       <Gallery />
       <Testimonials />
       <Cta />
+      <ContactInfo />
       <Footer />
     </div>
   );

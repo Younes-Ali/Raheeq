@@ -7,11 +7,7 @@ import { useNavigate } from "react-router-dom";
 export default function Cta() {
   const navigate = useNavigate();
   return (
-    <section
-      id="contact"
-      data-section="contact"
-      className="relative"
-    >
+    <section id="contact" data-section="contact" className="relative">
       <VideoBackground
         src="/videos/cta.mp4"
         label="فيديو الدعوة الختامية (CTA)"
@@ -55,9 +51,7 @@ export default function Cta() {
           }}
           className="mt-7"
         >
-          <MagneticButton
-            onClick={() => navigate("/shop")}
-          >
+          <MagneticButton onClick={() => navigate("/shop")}>
             Shop the Collection
           </MagneticButton>
         </motion.div>
